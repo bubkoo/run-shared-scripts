@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bubkoo/run-shared-scripts/compare/v1.0.2...v1.1.0) (2022-11-09)
+
+
+### Features
+
+* argument placeholders ([2395c98](https://github.com/bubkoo/run-shared-scripts/commit/2395c98dd2707c3990bdd1ecb63da50f4dcfdcd1))
+
 ## [1.0.2](https://github.com/bubkoo/run-shared-scripts/compare/v1.0.1...v1.0.2) (2022-11-09)
 
 ## [1.0.1](https://github.com/bubkoo/run-shared-scripts/compare/v1.0.0...v1.0.1) (2022-11-09)
