@@ -59,7 +59,8 @@
     "find-monorepo-root": "^1.0.2",
     "fs-extra": "^10.1.0",
     "meow": "^11.0.0",
-    "pidtree": "^0.6.0"
+    "pidtree": "^0.6.0",
+    "shell-quote": "^1.7.4"
   },
   "devDependencies": {
     "@bubkoo/semantic-release-config": "^1.4.0",

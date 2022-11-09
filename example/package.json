@@ -19,7 +19,14 @@
     "test": {
       "file": "./scripts/test.js"
     },
-    "pretest": "run-s -s clean:coverage"
+    "pretest": "run-s -s clean:coverage",
+    "start:1": "server --port {1}",
+    "start:2": "server -a {1} --port {2}",
+    "start:3": "server {@}",
+    "start:4": "server {*}",
+    "start:5": "server --port {1=8080}",
+    "start:6": "server --port1 {1=8080} --port2 {1}",
+    "start:7": "server -a {1=0.0.0.0} --port {2=8080}"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",

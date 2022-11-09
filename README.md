@@ -72,7 +72,7 @@ Then we can use `run-shared-scripts` to define and run these similar `"scripts"`
     "build:esm": "tsc --module esnext --target es2015 --outDir ./es",
     "build:cjs": "tsc --module commonjs --target es5 --outDir ./lib",
     "build:umd": "rollup -c",
-    "build:style": { 
+    "build:style": {
       "file": "./scripts/build-style.js" // path relative to monorepo's root directory
     },
     "build": "run-p build:style build:cjs build:esm build:umd",
@@ -118,11 +118,58 @@ The `rss` command run the same named(the key of `"scripts"`) task by default. We
 
 ### Run with arguments
 
-Any arguments following `--` will pass to task.
+Arguments before `--` separator are `rss` command args.
 
 ```json
   "scripts": {
-    "test": "rss -- --watch" // run jest in watch mode
+    "test": "rss --dry-run" // run in dry-run model
+  }
+```
+
+Arguments after  `--` separator will pass to task.
+
+```json
+  "scripts": {
+    "test": "rss -- --watch" // will run "jest --watch"
+  }
+```
+
+### Argument placeholders
+
+We can use placeholders to define the `"rss"` scripts.
+
+- `{1}`, `{2}`, ... -- An argument. `{1}` is the 1st argument. `{2}` is the 2nd.
+- `{@}` -- All arguments.
+- `{*}` -- All arguments as combined.
+- `{n=defaultValue}` -- An argument with default value. `n` is the n-th argument.
+
+```json
+  "rss": {
+    "s1": "server --port {1}",
+    "s2": "server -a {1} --port {2}",
+    "s3": "server {@}",
+    "s4": "server {*}",
+    "s5": "server --port {1=8080}",
+    "s6": "server --port1 {1=8080} --port2 {1}",
+    "s7": "server -a {1=0.0.0.0} --port {2=8080}"
+  }
+```
+
+Then pass your args in the `"scripts"`.
+
+```json
+  "scripts": {
+    "s1": "rss -- 8080",         // => "server --port 8080"
+    "s2": "rss -- 0.0.0.0 8080", // => "server -a 0.0.0.0 --port 8080"
+    "s3": "rss -- -a 0.0.0.0 --port 8080", // => "server -a 0.0.0.0 --port 8080"
+    "s4": "rss -- -a 0.0.0.0 --port 8080", // => "server '-a 0.0.0.0 --port 8080'"
+    "s5-1": "rss s5",         // => "server --port 8080"
+    "s5-2": "rss s5 -- 9090", // => "server --port 9090"
+    "s6-1": "rss s6",         // => "server --port1 8080 --port2 8080"
+    "s6-1": "rss s6 -- 9090", // => "server --port1 9090 --port2 9090"
+    "s7-1": "rss s7",                    // => "server -a 0.0.0.0 --port 8080"
+    "s7-2": "rss s7 -- '' 9090",         // => "server -a 0.0.0.0 --port 9090"
+    "s7-3": "rss s7 -- 127.0.0.1 9090",  // => "server -a 127.0.0.1 --port 9090"
   }
 ```
 

@@ -7,11 +7,24 @@
     "clean": "rss",
     "build:esm": "rss",
     "build:cjs": "rss",
+    "build:cjs:watch": "rss build:cjs -- -w",
     "build:umd": "rss",
     "build:dev": "rss",
     "build": "rss",
     "prebuild": "rss",
     "test": "rss",
-    "pretest": "rss"
+    "pretest": "rss",
+    "start:1": "rss --dry-run -- 8080",
+    "start:2": "rss --dry-run -- 0.0.0.0 8080",
+    "start:3": "rss --dry-run -- -a 0.0.0.0 --port 8080",
+    "start:4": "rss --dry-run -- -a 0.0.0.0 --port 8080",
+    "start:5:1": "rss start:5 --dry-run",
+    "start:5:2": "rss start:5 --dry-run -- 9090",
+    "start:6:1": "rss start:6 --dry-run",
+    "start:6:2": "rss start:6 --dry-run -- 9090",
+    "start:7:1": "rss start:7 --dry-run",
+    "start:7:2": "rss start:7 --dry-run -- '' 9090",
+    "start:7:3": "rss start:7 --dry-run -- 127.0.0.1 9090",
+    "start": "run-s -s start:**"
   }
 }
