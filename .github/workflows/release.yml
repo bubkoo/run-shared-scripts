@@ -1,0 +1,66 @@
+name: 🚀　Release
+on:
+  push:
+    branches:
+      - master
+      - next
+      - next-major
+      - alpha
+      - beta
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️　Checkout
+        uses: actions/checkout@v3
+
+      - name: 🎉　Setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: 🎉　Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
+
+      - name: 🌱　Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: 🚸　Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 🚧　Install
+        run: pnpm install --no-frozen-lockfile --ignore-scripts
+
+      - name: 🔑　Generate Token
+        uses: wow-actions/use-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+          env_name: bot_token
+
+      - name: 📦　Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          extends: "@bubkoo/semantic-release-config"
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ env.bot_token }}
+          GIT_AUTHOR_NAME: your-bot
+          GIT_AUTHOR_EMAIL: bubkoo.wy@gmail.com
+          GIT_COMMITTER_NAME: your-bot
+          GIT_COMMITTER_EMAIL: bubkoo.wy@gmail.com

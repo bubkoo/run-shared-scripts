@@ -1,0 +1,17 @@
+{
+  "name": "package-a",
+  "version": "1.0.0",
+  "scripts": {
+    "clean:build": "rss",
+    "clean:coverage": "rss",
+    "clean": "rss",
+    "build:esm": "rss",
+    "build:cjs": "rss",
+    "build:umd": "rss",
+    "build:dev": "rss",
+    "build": "rss",
+    "prebuild": "rss",
+    "test": "rss",
+    "pretest": "rss"
+  }
+}

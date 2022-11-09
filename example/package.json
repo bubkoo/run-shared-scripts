@@ -1,0 +1,47 @@
+{
+  "private": true,
+  "name": "example",
+  "scripts": {
+    "clean": "pnpm -r --parallel run clean",
+    "test": "pnpm -r --parallel run test",
+    "build": "pnpm -r run build"
+  },
+  "rss": {
+    "clean:build": "rimraf dist es lib",
+    "clean:coverage": "rimraf ./test/coverage",
+    "clean": "run-p clean:**",
+    "build:esm": "tsc --module esnext --target es6 --outDir ./es",
+    "build:cjs": "tsc --module commonjs --target es6 --outDir ./lib",
+    "build:umd": "rollup -c --bundleConfigAsCjs",
+    "build:dev": "run-p -s build:cjs build:esm",
+    "build": "run-p -s build:dev build:umd",
+    "prebuild": "run-s -s clean:build",
+    "test": {
+      "file": "./scripts/test.js"
+    },
+    "pretest": "run-s -s clean:coverage"
+  },
+  "dependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-syntax-flow": "^7.18.6",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.1",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/node": "^18.11.9",
+    "fs-extra": "^10.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.18",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.2.5",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-progress": "^1.1.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "run-shared-scripts": "link:..",
+    "tslib": "^2.4.1",
+    "typescript": "^4.4.3"
+  }
+}

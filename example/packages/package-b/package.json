@@ -1,0 +1,20 @@
+{
+  "name": "package-b",
+  "version": "1.0.0",
+  "dependencies": {
+    "package-a": "workspace:*"
+  },
+  "scripts": {
+    "clean:build": "rss",
+    "clean:coverage": "rss",
+    "clean": "rss",
+    "build:esm": "rss",
+    "build:cjs": "rss",
+    "build:umd": "rss",
+    "build:dev": "rss",
+    "build": "rss",
+    "prebuild": "rss",
+    "test": "rss -- --watch",
+    "pretest": "rss"
+  }
+}

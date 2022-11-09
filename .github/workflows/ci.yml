@@ -1,0 +1,45 @@
+name: 👷　CI
+on:
+  pull_request_target:
+  push:
+    branches:
+      - master
+      - next
+      - next-major
+      - alpha
+      - beta
+jobs:
+  ci:
+    strategy:
+      matrix:
+        node: [14, 16, 18]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: ⤵️　Checkout
+        uses: actions/checkout@v3
+
+      - name: 🎉　Setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: 🎉　Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
+
+      - name: 🚧　Install
+        run: pnpm install --no-frozen-lockfile --ignore-scripts
+
+      - run: cd example
+
+      - name: 🚧　Install
+        run: pnpm install --no-frozen-lockfile --ignore-scripts
+
+      - name: 🚀　Build
+        run: pnpm run build
+
+      - name: ✅　Test
+        run: pnpm run test

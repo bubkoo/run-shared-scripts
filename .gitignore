@@ -1,0 +1,10 @@
+.DS_Store
+.vscode
+.idea
+.turbo
+npm-debug.log
+yarn-error.log
+lerna-debug.log
+node_modules
+*.pem
+!mock-cert.pem

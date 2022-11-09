@@ -1,0 +1,75 @@
+{
+  "name": "run-shared-scripts",
+  "version": "0.0.1",
+  "description": "Define and run shared scripts of a monorepo using Yarn workspaces, Bolt, Lerna or pnpm",
+  "main": "lib/index.js",
+  "type": "module",
+  "bin": {
+    "rss": "./bin/rss.js"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "keywords": [
+    "monorepo",
+    "scripts",
+    "npm-scripts",
+    "shared-scripts",
+    "workspaces",
+    "yarn-monorepo",
+    "yarn-workspaces",
+    "yarn",
+    "lerna-monorepo",
+    "lerna-workspaces",
+    "lerna",
+    "pnpm-workspaces",
+    "pnpm-monorepo",
+    "pnpm",
+    "Bolt"
+  ],
+  "scripts": {},
+  "author": {
+    "name": "bubkoo",
+    "email": "bubkoo.wy@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/bubkoo/run-shared-scripts",
+  "bugs": {
+    "url": "https://github.com/bubkoo/run-shared-scripts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/bubkoo/run-shared-scripts.git"
+  },
+  "release": {
+    "extends": "@bubkoo/semantic-release-config"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "chalk": "^5.1.2",
+    "cross-spawn": "^7.0.3",
+    "fastest-levenshtein": "^1.0.16",
+    "find-monorepo-root": "^1.0.2",
+    "fs-extra": "^10.1.0",
+    "meow": "^11.0.0",
+    "pidtree": "^0.6.0"
+  },
+  "devDependencies": {
+    "@bubkoo/semantic-release-config": "^1.4.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@types/node": "^18.11.9",
+    "semantic-release": "^19.0.5"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
