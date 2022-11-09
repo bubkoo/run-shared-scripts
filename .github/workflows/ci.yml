@@ -33,5 +33,5 @@ jobs:
       - name: 🚧　Install
         run: pnpm install --no-frozen-lockfile --ignore-scripts
 
-      - name: 🚀 Test rss
+      - name: 🚀　CI
         run: pnpm run ci
