@@ -28,7 +28,9 @@
     "pnpm",
     "Bolt"
   ],
-  "scripts": {},
+  "scripts": {
+    "ci": "cd ./example && pnpm install --no-frozen-lockfile --ignore-scripts && pnpm run build && pnpm run test"
+  },
   "author": {
     "name": "bubkoo",
     "email": "bubkoo.wy@gmail.com"

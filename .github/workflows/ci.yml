@@ -12,7 +12,7 @@ jobs:
   ci:
     strategy:
       matrix:
-        node: [14, 16, 18]
+        node: [14.x, 16.x, 18.x]
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -22,7 +22,7 @@ jobs:
       - name: 🎉　Setup nodejs
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: ${{ matrix.node }}
 
       - name: 🎉　Setup pnpm
         uses: pnpm/action-setup@v2
@@ -33,13 +33,5 @@ jobs:
       - name: 🚧　Install
         run: pnpm install --no-frozen-lockfile --ignore-scripts
 
-      - run: cd example
-
-      - name: 🚧　Install
-        run: pnpm install --no-frozen-lockfile --ignore-scripts
-
-      - name: 🚀　Build
-        run: pnpm run build
-
-      - name: ✅　Test
-        run: pnpm run test
+      - name: 🚀 Test rss
+        run: pnpm run ci
