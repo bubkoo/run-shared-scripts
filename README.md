@@ -1,5 +1,3 @@
-# run-shared-scripts
-
 <p align="center"><strong>run-shared-scripts</strong></p>
 <p align="center">Define and run shared scripts of a monorepo using Yarn workspaces, Bolt, Lerna or pnpm</p>
 
