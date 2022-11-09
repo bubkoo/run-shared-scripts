@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/bubkoo/run-shared-scripts/actions/workflows/release.yml"><img alt="build" src="https://img.shields.io/github/workflow/status/bubkoo/run-shared-scripts/%F0%9F%9A%80%E3%80%80Release/master?logo=github&style=flat-square"></a>
+<a href="https://github.com/bubkoo/run-shared-scripts/actions/workflows/ci.yml"><img alt="build" src="https://img.shields.io/github/workflow/status/bubkoo/run-shared-scripts/%F0%9F%91%B7%E3%80%80CI/master?logo=github&style=flat-square"></a>
 <a href="https://www.npmjs.com/package/run-shared-scripts"><img alt="NPM Package" src="https://img.shields.io/npm/v/run-shared-scripts.svg?style=flat-square"></a>
 <a href="https://www.npmjs.com/package/run-shared-scripts"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/run-shared-scripts?logo=npm&style=flat-square"></a>
 </p>
@@ -22,7 +22,7 @@ $ npm install --save-dev run-shared-scripts
 
 ## Usage
 
-Using [npm-scripts](https://docs.npmjs.com/misc/scripts) is a convenient way to our CI/CD tasks, and we may have some similar `"scripts"` in a monorepo. Take the following monorepo for example.
+Using [npm-scripts](https://docs.npmjs.com/misc/scripts) is a convenient way to run our CI/CD tasks, and we may have some similar `"scripts"` in a monorepo workspaces. Take the following monorepo for example.
 
 ```
 .
@@ -40,7 +40,7 @@ Using [npm-scripts](https://docs.npmjs.com/misc/scripts) is a convenient way to 
     ...
 ```
 
-The `"scripts"` property defined in `./packages/project-a/package.json` and `./packages/project-b/package.json` is similar.
+The `"scripts"` defined in `./packages/project-a/package.json` and `./packages/project-b/package.json` is similar.
 
 ```json
   "scripts": {
@@ -65,6 +65,7 @@ The `"scripts"` property defined in `./packages/project-a/package.json` and `./p
 Then we can use `run-shared-scripts` to define and run these similar `"scripts"`.
 
 1. Add `rss` config in the monorepo root's `./package.json` file.
+   
 ```json
   "rss": {
     "clean:build": "rimraf dist lib es",
@@ -73,7 +74,9 @@ Then we can use `run-shared-scripts` to define and run these similar `"scripts"`
     "build:esm": "tsc --module esnext --target es2015 --outDir ./es",
     "build:cjs": "tsc --module commonjs --target es5 --outDir ./lib",
     "build:umd": "rollup -c",
-    "build:style": { "file": "./scripts/build-style.js" },
+    "build:style": { 
+      "file": "./scripts/build-style.js" // path relative to monorepo's root directory
+    },
     "build": "run-p build:style build:cjs build:esm build:umd",
     "prebuild": "run-s lint clean",
     "test": "jest",
@@ -85,7 +88,7 @@ Then we can use `run-shared-scripts` to define and run these similar `"scripts"`
 
 **Note that** the `"build:style"` command define the task to run an executable file. The executable file path must be an absolute path or a path relative the monorepo's root directory.
 
-2. Replace with `rss` command in `./packages/project-a/package.json` and `./packages/project-b/package.json`.
+1. Replace with `rss` command in `./packages/project-a/package.json` and `./packages/project-b/package.json`.
 
 ```json
   "scripts": {
