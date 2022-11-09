@@ -1,6 +1,6 @@
 {
   "name": "run-shared-scripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Define and run shared scripts of a monorepo using Yarn workspaces, Bolt, Lerna or pnpm",
   "main": "lib/index.js",
   "type": "module",
