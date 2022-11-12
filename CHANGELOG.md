@@ -1,3 +1,5 @@
+## [1.1.3](https://github.com/bubkoo/run-shared-scripts/compare/v1.1.2...v1.1.3) (2022-11-12)
+
 ## [1.1.2](https://github.com/bubkoo/run-shared-scripts/compare/v1.1.1...v1.1.2) (2022-11-12)
 
 ## [1.1.1](https://github.com/bubkoo/run-shared-scripts/compare/v1.1.0...v1.1.1) (2022-11-10)
