@@ -112,7 +112,7 @@ The `rss` command run the same named(the key of `"scripts"`) task by default. We
 
 ```json
   "scripts": {
-    "clean": "rss clean:build" // will run "clean:build" task defined in the "rss" config
+    "clean": "rss clean:build" // run "clean:build" task defined in the "rss" config
   }
 ```
 
@@ -122,7 +122,7 @@ Arguments before `--` separator are `rss` command args.
 
 ```json
   "scripts": {
-    "test": "rss --dry-run" // run in dry-run model
+    "test": "rss --dry-run" // dry-run model
   }
 ```
 
@@ -130,7 +130,7 @@ Arguments after  `--` separator will pass to task.
 
 ```json
   "scripts": {
-    "test": "rss -- --watch" // will run "jest --watch"
+    "test": "rss -- --watch" // => "jest --watch"
   }
 ```
 
