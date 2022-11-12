@@ -60,7 +60,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.APP_TOKEN }}
-          GIT_AUTHOR_NAME: your-bot
-          GIT_AUTHOR_EMAIL: your-bot@users.noreply.github.com
-          GIT_COMMITTER_NAME: your-bot
-          GIT_COMMITTER_EMAIL: your-bot@users.noreply.github.com
+          GIT_AUTHOR_NAME: your-bot[bot]
+          GIT_AUTHOR_EMAIL: your-bot[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: your-bot[bot]
+          GIT_COMMITTER_EMAIL: your-bot[bot]@users.noreply.github.com
