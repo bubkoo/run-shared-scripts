@@ -29,19 +29,19 @@
     "start:7": "server -a {1=0.0.0.0} --port {2=8080}"
   },
   "dependencies": {
-    "@babel/core": "^7.20.2",
+    "@babel/core": "^7.20.5",
     "@babel/plugin-syntax-flow": "^7.18.6",
     "@babel/plugin-transform-react-jsx": "^7.19.0",
-    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-commonjs": "^23.0.3",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.1",
-    "@rollup/plugin-typescript": "^8.2.5",
-    "@types/node": "^18.11.9",
-    "fs-extra": "^10.0.0",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "@types/node": "^18.11.10",
+    "fs-extra": "^11.1.0",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.18",
+    "postcss": "^8.4.19",
     "rimraf": "^3.0.2",
-    "rollup": "^3.2.5",
+    "rollup": "^3.5.1",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-postcss": "^4.0.1",
@@ -49,6 +49,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "run-shared-scripts": "link:..",
     "tslib": "^2.4.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.9.3"
   }
 }
