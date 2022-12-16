@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/bubkoo/run-shared-scripts/actions/workflows/ci.yml"><img alt="build" src="https://img.shields.io/github/workflow/status/bubkoo/run-shared-scripts/%F0%9F%91%B7%E3%80%80CI/master?logo=github&style=flat-square"></a>
+<a href="https://github.com/bubkoo/run-shared-scripts/actions/workflows/ci.yml"><img alt="build" src="https://img.shields.io/github/actions/workflow/status/bubkoo/run-shared-scripts/ci.yml?branch=master&logo=github&style=flat-square"></a>
 <a href="https://www.npmjs.com/package/run-shared-scripts"><img alt="NPM Package" src="https://img.shields.io/npm/v/run-shared-scripts.svg?style=flat-square"></a>
 <a href="https://www.npmjs.com/package/run-shared-scripts"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/run-shared-scripts?logo=npm&style=flat-square"></a>
 </p>
